@@ -1,0 +1,228 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section id="intro" class="description content bg-mc-guy">
+        <div class="bg-raster"></div>
+        <div class="container text-center">
+            <div class="row row-cols-1">
+                <div class="col">
+                    <h2><img src="{{ asset('build/images/mc-guy-text.svg') }}" alt="Madness Crunch Logo" style="width: 100%; max-width: 600px; min-width: 150px"></h2>
+                    <h3>Feinster Rock aus der Hauptstadt</h3>
+                    <p>
+                        Madness Crunch ist eine aufstrebende Band aus Berlin, die sich durch ihren einzigartigen Stilmix aus Punk, Pop und Alternative Rock auszeichnet. Mit energiegeladenen Live-Auftritten und eingängigen Texten haben sie sich schnell einen Namen in der Berliner Musikszene gemacht. Die Bandmitglieder bringen eine vielfältige musikalische Erfahrung mit, die sich in ihren kreativen Kompositionen widerspiegelt.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-5 bg-crunch-dark">
+        <div class="bg-raster"></div>
+        <div class="container-fluid">
+            <div class="row row-cols-1">
+                <div class="col">
+                    <div id="carouselExampleCaptions" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="container">
+                                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                                        <div class="col d-block d-md-none img-mobile">
+                                            <div class="col"><img src="{{ asset('build/images/sidney.jpg') }}" class="img-fluid shadow" alt="..."></div>
+                                        </div>
+                                        <div class="col d-none d-md-block"><img src="{{ asset('build/images/sidney.jpg') }}" class="img-fluid shadow" alt="..."></div>
+                                        <div class="col align-self-center">
+                                            <h4><img src="{{ asset('build/images/sidney.svg') }}" alt="Pauline" class="img-fluid" style="max-height: 60px"></h4>
+                                            <p class="text-center text-md-start">
+                                                Sid überzeugt als Gitarrist und zweite Stimme der Band. Seine raffinierten Riffs und harmonischen Gesangseinlagen ergänzen Paulines Performance perfekt.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                                        <div class="col d-block d-md-none img-mobile">
+                                            <div class="col"><img src="{{ asset('build/images/pauline.jpg') }}" class="img-fluid shadow" alt="..."></div>
+                                        </div>
+                                        <div class="col d-none d-md-block"><img src="{{ asset('build/images/pauline.jpg') }}" class="img-fluid shadow" alt="..."></div>
+                                        <div class="col align-self-center">
+                                            <h4><img src="{{ asset('build/images/pauline.svg') }}" alt="Pauline" class="img-fluid" style="max-height: 60px"></h4>
+                                            <p class="text-center text-md-start">
+                                                Pauline ist die charismatische Frontsängerin und Bassistin von Madness Crunch. Mit ihrer kraftvollen Stimme und ihrem energiegeladenen Auftreten ist sie das Herzstück der Band.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row row-cols-1 row-cols-md-2 g-3">
+                                        <div class="col d-block d-md-none img-mobile">
+                                            <div class="col"><img src="{{ asset('build/images/dennis.jpg') }}" class="img-fluid shadow" alt="..."></div>
+                                        </div>
+                                        <div class="col d-none d-md-block"><img src="{{ asset('build/images/dennis.jpg') }}" class="img-fluid shadow" alt="..."></div>
+                                        <div class="col align-self-center">
+                                            <h4><img src="{{ asset('build/images/dennis.svg') }}" alt="Pauline" class="img-fluid" style="max-height: 60px"></h4>
+                                            <p class="text-center text-md-start">
+                                                Dennis, der ziemlich schlanke Schlagzeuger, beeindruckt mit seinem präzisen Schlagzeugspiel und sorgt für den unverkennbaren Rhythmus, der die Band antreibt.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="concerts" class="description content">
+        <div class="container">
+            <div class="row row-cols-1 g-3">
+                <div class="col text-center text-md-start">
+                    <img src="{{ asset('build/images/concerts.svg') }}" class="mb-2" alt="upcoming events graphic" style="max-height: 40px; min-width: 150px">
+                    <h3>Termine & Veranstaltungen</h3>
+                </div>
+
+                <!-- Beginn Termineintrag /-->
+                {% if events is defined %}
+                    {% for event in events %}
+                        <div class="col p-3">
+                            <div class="row text-light">
+                                <div class="col-12 col-md-3">
+                                    <div class="d-flex flex-column align-items-center align-items-md-start">
+                                        <span class="event-title">{{ event.time|date('d.m.Y')  }}</span>
+                                        <span class="">{{ event.time|date('H:i') }} Uhr</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="d-flex flex-column align-items-center align-items-md-start">
+                                        <span class="event-title">{{ event.location ?? '-' }}</span>
+                                        {% if event.locationWebsite is not null %}
+                                            <a target="_blank" href="{{ event.locationWebsite }}" class="event-description">{{ event.title ?? '-' }}</a>
+                                            {% else %}
+                                                <span class="event-description">{{ event.title ?? '-' }}</span>
+                                        {% endif %}
+
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-3">
+                                    <div class="d-flex flex-column align-items-center align-items-md-start">
+                                        <span class="event-title">Hinweise</span>
+                                        <span>{{ event.info ?? '-' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="col">
+                            <div class="row text-light text-center">
+                                <div class="col-12">
+                                    <span class="fst-italic">Aktuell ist nicht viel los!</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% endif %}
+                <!-- Ende Termineintrag /-->
+
+            </div>
+        </div>
+    </section>
+    <section id="media" class="content">
+        <div class="container">
+            <div class="row row-cols-1 g-3">
+                <div class="col text-center text-md-start mb-3">
+                    <img src="{{ asset('build/images/booking.svg') }}" class="mb-2" alt="upcoming events graphic" style="max-height: 40px; min-width: 150px">
+                    <h3 style="font-weight: 700!important;">Wir spielen für dich</h3>
+                    <p class="my-3 h5">
+                        Schreib uns eine kurze Nachricht für eine Buchungsanfrage. Wir antworten bestimmt schneller als das Finanzamt.
+                        Unseren aktuellen <a href="#" class="link-dark">Stage Rider</a>
+                        und weitere wichtige Hinweise findest du auch im Abschnitt <a href="#" class="link-dark">für Veranstalter</a>.
+                    </p>
+                </div>
+
+                <div class="col">
+                    <form id="contactForm" method="post" action="{{ url('email_send') }}">
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" type="text" placeholder="Name" data-sb-validations="required" />
+                                    <label for="name">Name</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="ort" type="text" placeholder="Ort der Veranstaltung" data-sb-validations="required" />
+                                    <label for="ort">Ort der Veranstaltung</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="datum" type="date" placeholder="Datum" data-sb-validations="required" />
+                                    <label for="datum">Datum</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">Name is required.</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Email Input -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="emailAddress" type="email" name="email" placeholder="E-Mail-Adresse" data-sb-validations="required,email" />
+                            <label for="emailAddress">E-Mail-Adresse</label>
+                            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Email Address is required.</div>
+                            <div class="invalid-feedback" data-sb-feedback="emailAddress:email">Email Address Email is not valid.</div>
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" type="text" placeholder="Nachricht" style="height: 10rem;" data-sb-validations="required"></textarea>
+                            <label for="message">Nachricht</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">Message is required.</div>
+                        </div>
+
+                        <!-- Submit success message -->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Form submission successful!</div>
+                                <p>To activate this form, sign up at</p>
+                                <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
+                            </div>
+                        </div>
+
+                        <!-- Submit error message -->
+                        <div class="d-none" id="submitErrorMessage">
+                            <div class="text-center text-danger mb-3">Error sending message!</div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="d-grid">
+                            <input type="hidden" name="token" value="{{ csrf_token('booking-request') }}">
+                            <button class="btn btn-dark btn-lg" id="submitButton" type="submit">Buchung anfragen</button>
+                        </div>
+                    </form>
+                    <!-- End of contact form -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
