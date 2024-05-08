@@ -38,10 +38,10 @@ class MailController extends AbstractController
                 ->to('booking@madnesscrunch.de')
                 ->replyTo('booking@madnesscrunch.de')
                 ->subject('Buchungsanfrage')
-                ->text("Anfrage von: $name ($email)")
-                ->text("Datum: $newDate Uhr")
-                ->text("Location: $location")
-                ->html("Nachricht: <p>$message</p>")
+                ->text("Anfrage von: $name ($email)\n")
+                ->text("Datum: $newDate Uhr\n")
+                ->text("Location: $location\n")
+                ->text("Nachricht:\n $message")
             ;
 
             $mailer->send($email);
