@@ -37,16 +37,36 @@
             <div class="d-none d-md-inline-block">
                 <a href="{{ url('app_index') }}#concerts" >Konzerte</a>
                 <a  href="{{ url('app_music') }}" class="d-none d-md-inline-block">Musik</a>
-                <a  href="{{ url('app_press') }}" class="d-none d-md-inline-block">Presse</a>
             </div>
         </div>
         <div class="concerts d-none d-md-block">
             <a href="{{ url('app_index') }}#media" class="btn-book">Buchen</a>
         </div>
         <div class="sidebar-menu-button-wrapper d-block d-md-none">
-            <a href="#" class="btn-book">MN</a>
+            <a href="#offcanvas" class="btn-book" data-bs-toggle="offcanvas" role="button" aria-controls="offcanvas">MN</a>
         </div>
     </div>
+
+    <div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasLabel">Navigation</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="row row-cols-1 gap-1 links">
+                <a href="{{ url('app_index') }}" class="text-uppercase">Madness Crunch</a>
+                <a href="{{ url('app_index') }}#concerts" class="text-uppercase">Konzerte</a>
+                <a  href="{{ url('app_music') }}" class="text-uppercase">Musik</a>
+            </div>
+        </div>
+    </div>
+    {% for message in app.flashes('success') %}
+        <section id="message">
+            <div class="alert alert-info border-0 rounded-0">
+                {{ message }}
+            </div>
+        </section>
+    {% endfor %}
 
         {% block body %}{% endblock %}
     <section id="intro" class="description content">

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Event;
+use App\Entity\Media;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Repository\RepositoryFactory;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,10 +41,13 @@ class AppController extends AbstractController
     }
 
     #[Route('/music', name: 'music')]
-    public function music(): Response
+    public function music(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('app/index.html.twig', [
-            'page_title' => 'Musik und mehr'
+        $media = $entityManager->getRepository(Media::class)->findAll();
+
+        return $this->render('app/music.html.twig', [
+            'page_title' => 'Musik und mehr',
+            'media' => $media
         ]);
     }
 

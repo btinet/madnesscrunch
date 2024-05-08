@@ -23,18 +23,29 @@ class MailController extends AbstractController
     {
         $submittedToken = $request->request->get('token');
         $email = $request->request->get('email');
+        $name = $request->request->get('name');
+        $location = $request->request->get('location');
+        $date = $request->request->get('date');
+        $message = $request->request->get('message');
+
+        $dateFormatted = date_create($date);
+        $newDate = date_format($dateFormatted, 'd.m.Y H:i');
 
         if($this->isCsrfTokenValid('booking-request', $submittedToken) and $email !== null) {
 
             $email = (new Email())
                 ->from('no-reply@madnesscrunch.de')
-                ->to($email)
+                ->to('booking@madnesscrunch.de')
                 ->replyTo('booking@madnesscrunch.de')
-                ->subject('Time for Symfony Mailer!')
-                ->text('Sending emails is fun again!')
-                ->html('<p>See Twig integration for better HTML integration!</p>');
+                ->subject('Buchungsanfrage')
+                ->text("Anfrage von: $name ($email)")
+                ->text("Datum: $newDate Uhr")
+                ->text("Location: $location")
+                ->html("Nachricht: <p>$message</p>")
+            ;
 
             $mailer->send($email);
+            $this->addFlash("success","E-Mail wurde versendet!");
         }
 
 
