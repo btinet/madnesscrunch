@@ -29,7 +29,7 @@ class MailController extends AbstractController
         $message = $request->request->get('message');
 
         $dateFormatted = date_create($date);
-        $newDate = date_format($dateFormatted, 'd.m.Y H:i');
+        $newDate = date_format($dateFormatted, 'd.m.Y');
 
         if($this->isCsrfTokenValid('booking-request', $submittedToken) and $email !== null) {
 
@@ -38,10 +38,7 @@ class MailController extends AbstractController
                 ->to('booking@madnesscrunch.de')
                 ->replyTo('booking@madnesscrunch.de')
                 ->subject('Buchungsanfrage')
-                ->text("Anfrage von: $name ($email)\n")
-                ->text("Datum: $newDate Uhr\n")
-                ->text("Location: $location\n")
-                ->text("Nachricht:\n $message")
+                ->html("Anfrage von: $name ($email)<br>Datum: $newDate<br>Location: $location<br>Nachricht:<br><p>$message</p>")
             ;
 
             $mailer->send($email);
