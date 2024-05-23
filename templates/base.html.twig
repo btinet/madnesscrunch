@@ -22,6 +22,7 @@
 
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
         {% endblock %}
 
         {% block javascripts %}
@@ -37,6 +38,7 @@
             <div class="d-none d-md-inline-block">
                 <a href="{{ url('app_index') }}#concerts" >Konzerte</a>
                 <a  href="{{ url('app_music') }}" class="d-none d-md-inline-block">Musik</a>
+                <a  href="{{ url('app_pictures') }}" class="d-none d-md-inline-block">Fotos</a>
             </div>
         </div>
         <div class="concerts d-none d-md-block">
@@ -57,6 +59,7 @@
                 <a href="{{ url('app_index') }}" class="text-uppercase">Madness Crunch</a>
                 <a href="{{ url('app_index') }}#concerts" class="text-uppercase">Konzerte</a>
                 <a  href="{{ url('app_music') }}" class="text-uppercase">Musik</a>
+                <a  href="{{ url('app_pictures') }}" class="text-uppercase">Fotos</a>
             </div>
         </div>
     </div>

@@ -51,6 +51,15 @@ class AppController extends AbstractController
         ]);
     }
 
+    #[Route('/pictures', name: 'pictures')]
+    public function pictures(): Response
+    {
+
+        return $this->render('app/pictures.html.twig', [
+            'page_title' => 'Fotos',
+        ]);
+    }
+
     #[Route('/press', name: 'press')]
     public function press(): Response
     {

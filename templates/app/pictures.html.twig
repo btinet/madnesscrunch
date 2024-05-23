@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <section id="concerts" class="description content">
+        <div class="container">
+            <div class="row row-cols-1 g-3">
+                <div class="col text-center text-md-start mb-5">
+                    <img src="{{ asset('build/images/fotos.svg') }}" class="mb-2" alt="upcoming events graphic" style="max-height: 40px; min-width: 150px">
+                    <h3>Konzerte, Interviews und mehr</h3>
+                </div>
+                <h4>Interview und Radiokonzert im Rockradio</h4>
+                <small>Mädchenrock, 21.05.2024</small>
+                    <div class="row row-cols-1 row-cols-md-3 g-3" data-masonry='{"percentPosition": true }'>
+                        <div class="col"><img src="{{ asset('build/images/fotos/photo_1_2024-05-23_06-41-09.jpg') }}" class="img-fluid" alt=""></div>
+                        <div class="col"><img src="{{ asset('build/images/fotos/photo_2_2024-05-23_06-41-09.jpg') }}" class="img-fluid" alt=""></div>
+                        <div class="col"><img src="{{ asset('build/images/fotos/photo_3_2024-05-23_06-41-09.jpg') }}" class="img-fluid" alt=""></div>
+                        <div class="col"><img src="{{ asset('build/images/fotos/photo_4_2024-05-23_06-41-09.jpg') }}" class="img-fluid" alt=""></div>
+                        <div class="col"><img src="{{ asset('build/images/fotos/photo_5_2024-05-23_06-41-09.jpg') }}" class="img-fluid" alt=""></div>
+                        <div class="col"><img src="{{ asset('build/images/fotos/photo_7_2024-05-23_06-41-09.jpg') }}" class="img-fluid" alt=""></div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    <section id="media" class="content">
+        <div class="container">
+            <div class="row row-cols-1 g-3">
+                <div class="col text-center text-md-start mb-3">
+                    <img src="{{ asset('build/images/booking.svg') }}" class="mb-2" alt="upcoming events graphic" style="max-height: 40px; min-width: 150px">
+                    <h3 style="font-weight: 700!important;">Wir spielen für dich</h3>
+                    <p class="my-3 h5">
+                        Schreib uns eine kurze Nachricht für eine Buchungsanfrage. Wir antworten bestimmt schneller als das Finanzamt.
+                        Unseren aktuellen <a href="#" class="link-dark">Stage Rider</a>
+                        und weitere wichtige Hinweise findest du auch im Abschnitt <a href="#" class="link-dark">für Veranstalter</a>.
+                    </p>
+                </div>
+
+                <div class="col">
+                    <form id="contactForm" class="needs-validation" method="post" action="{{ url('email_send') }}" novalidate>
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="name" type="text" placeholder="Name" required data-sb-validations="required" />
+                                    <label for="name">Name</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">Bitte gib deinen Namen an.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-1 row-cols-md-2">
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="ort" type="text" placeholder="Ort der Veranstaltung" required data-sb-validations="required" />
+                                    <label for="ort">Ort der Veranstaltung</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">Wo sollen wir auftreten?</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-floating mb-3">
+                                    <input class="form-control" id="datum" type="date" placeholder="Datum" data-sb-validations="required" required />
+                                    <label for="datum">Datum</label>
+                                    <div class="invalid-feedback" data-sb-feedback="name:required">Wann geht's los?</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- Email Input -->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="emailAddress" type="email" name="email" placeholder="E-Mail-Adresse" required data-sb-validations="required,email" />
+                            <label for="emailAddress">E-Mail-Adresse</label>
+                            <div class="invalid-feedback" data-sb-feedback="emailAddress:required">Wie erreichen wir dich?</div>
+                        </div>
+
+                        <!-- Message Input -->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" type="text" placeholder="Nachricht" style="height: 10rem;" required data-sb-validations="required"></textarea>
+                            <label for="message">Nachricht</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">Teile deine Gedanken mit uns.</div>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="d-grid">
+                            <input type="hidden" name="token" value="{{ csrf_token('booking-request') }}">
+                            <button class="btn btn-dark btn-lg" id="submitButton" type="submit">Buchung anfragen</button>
+                        </div>
+                    </form>
+                    <!-- End of contact form -->
+                </div>
+
+            </div>
+        </div>
+    </section>
+{% endblock %}
